@@ -1,0 +1,21 @@
+# 
+# This is the workflow file that Direktiv will use to execute the policy
+#
+description: Run http-request
+
+functions:
+- id: http-request
+  image: gcr.io/direktiv/functions/http-request:1.0
+  type: knative-workflow
+
+states:
+- id: http-request
+  type: action
+  action:
+    function: http-request
+    input: 
+      url: 'https://httpbin.org/anything'
+      method: POST
+      content:
+        value:
+          tweet: 'jq(.)'

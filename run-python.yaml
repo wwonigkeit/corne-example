@@ -7,9 +7,9 @@ functions:
 - id: python
   service: python
   type: knative-namespace
-- id: http-request
-  image: gcr.io/direktiv/functions/http-request:1.0
-  type: knative-workflow
+- id: http-request-subflow
+  workflow: http-request-subflow
+  type: subflow
 
 states:
 - id: run-code
@@ -55,10 +55,5 @@ states:
   type: foreach
   array: 'jq([.tweets[] | { tweet: .} ])'
   action:
-    function: http-request
-    input: 
-      url: 'https://httpbin.org/anything'
-      method: POST
-      content:
-        value:
-          hello: world
+    function: http-request-subflow
+    input: jq(.)
