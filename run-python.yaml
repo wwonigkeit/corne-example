@@ -53,7 +53,7 @@ states:
 
 - id: foreach-example
   type: foreach
-  array: 'jq([.tweets[] | . ])'
+  array: 'jq([.tweets[] | { tweet: .} ])'
   action:
     function: http-request
     input: 
