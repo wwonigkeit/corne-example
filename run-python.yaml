@@ -35,9 +35,13 @@ states:
 
 - id: store-data
   type: setter
-  log: jq(.)
+  #log: jq(.)
   variables:
   - key: tweets.json
     scope: workflow
     mimeType: application/json
     value: 'jq(.)'
+
+- id: log-all
+  type: noop
+  log: jq(.)
