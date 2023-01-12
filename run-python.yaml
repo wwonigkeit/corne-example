@@ -7,6 +7,9 @@ functions:
 - id: python
   service: python
   type: knative-namespace
+- id: http-request
+  image: gcr.io/direktiv/functions/http-request:1.0
+  type: knative-workflow
 
 states:
 - id: run-code
@@ -46,3 +49,16 @@ states:
 - id: log-all
   type: noop
   log: jq(.)
+  transition: foreach-example
+
+- id: foreach-example
+  type: foreach
+  array: 'jq(.tweets)'
+  action:
+    function: http-request
+    input: 
+      url: 'https://httpbin.org/anything'
+      method: POST
+      content:
+        value:
+          hello: world
