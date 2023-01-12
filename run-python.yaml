@@ -25,5 +25,4 @@ states:
       scope: workflow
     - key: requirements.txt
       scope: workflow
-  transform: jq(.return.python[2])
-  transition: run-shell      
+  
