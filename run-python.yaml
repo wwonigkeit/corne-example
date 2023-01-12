@@ -30,7 +30,7 @@ states:
       scope: workflow
     - key: input.json
       scope: workflow
-  #transform: 'jq({ tweets: .return.python[2].result })'
+  transform: 'jq({ tweets: .return.python[2].result })'
   transition: store-data
 
 - id: store-data
@@ -40,4 +40,4 @@ states:
   - key: tweets.json
     scope: workflow
     mimeType: application/json
-    value: 'jq({ tweets: .return.python[2].result })'
+    value: 'jq(.)'
