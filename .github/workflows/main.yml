@@ -18,4 +18,4 @@ jobs:
     steps:
     - name: REST API with curl dev.direktiv.io
       run: |
-        curl -X POST "https://dev.direktiv.io/api/namespaces/corne-example/tree?op=sync-mirror&force=true" -H "direktiv-token: ${{ secrets.DIREKTIV_TOKEN }}"
+        curl -k -X POST "https://dev.direktiv.io/api/namespaces/corne-example/tree?op=sync-mirror&force=true" -H "direktiv-token: ${{ secrets.DIREKTIV_TOKEN }}"
