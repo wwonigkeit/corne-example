@@ -41,6 +41,7 @@ states:
     scope: workflow
     mimeType: application/json
     value: 'jq(.)'
+  transition: log-all
 
 - id: log-all
   type: noop
