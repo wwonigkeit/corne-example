@@ -5,8 +5,8 @@ description: This is the example code execution workflow
 
 functions:
 - id: python
-  image: gcr.io/direktiv/functions/python:1.0
-  type: knative-workflow
+  service: python
+  type: knative-namespace
 
 states:
 - id: run-code
@@ -19,8 +19,8 @@ states:
       - command: pwd
       - command: ls -la
       - command: python3 -m pip install -r requirements.txt
-      - command: python3 py-tweets.py -i input.json -o output.json > out/output.json
-       # - command: cat output.json
+      - command: python3 py-tweets.py -i input.json -o output.json
+      - command: cat output.json
       # - command: python3 py-tweets.py -b jq(.bearer_token) -t jq(.twitter_searchstring) -m jq(.max_search_returns)
       # - command: ls -la
     files:
@@ -29,4 +29,5 @@ states:
     - key: requirements.txt
       scope: workflow
     - key: input.json
-      scope: workflow  
+      scope: workflow
+  
