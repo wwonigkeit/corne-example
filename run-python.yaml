@@ -21,7 +21,7 @@ states:
       - command: pyenv local 3.8.13
       #- command: pwd
       #- command: ls -la
-      #- command: python3 -m pip install -r requirements.txt
+      - command: python3 -m pip install -r requirements.txt
       - command: python3 py-tweets.py -i input.json -o output.json
       - command: cat output.json
       # - command: python3 py-tweets.py -b jq(.bearer_token) -t jq(.twitter_searchstring) -m jq(.max_search_returns)
