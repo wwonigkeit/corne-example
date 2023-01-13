@@ -5,8 +5,8 @@ description: This is the example code execution workflow
 
 functions:
 - id: python
-  service: python
-  type: knative-namespace
+  image: gcr.io/direktiv/functions/python:1.0
+  type: knative-workflow
 - id: http-request-subflow
   workflow: http-request-subflow
   type: subflow
@@ -57,3 +57,4 @@ states:
   action:
     function: http-request-subflow
     input: jq(.)
+
